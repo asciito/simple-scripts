@@ -1,0 +1,39 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 62.5%;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-size: 10px;
+    margin: 0;
+}
+
+#clock {
+    color: crimson;
+    font-size: 3rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+}
+
+.slider {
+    position: relative;
+}
+
+.slider .slide {
+    background-color: #a3a3a3;
+    padding: 2rem;
+    position: absolute;
+    display: none;
+}
+
+.slider .slide.show {
+    display: block;
+}
