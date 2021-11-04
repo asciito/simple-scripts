@@ -1,6 +1,6 @@
 {
     "window.zoomLevel": 1,
-    "liveServer.settings.port": 80,
+    "liveServer.settings.port": 81,
     "liveServer.settings.host": "localhost",        // Nombre del host
     "liveServer.settings.root": "/web/slideshow"    // Cambiar por la carpeta que queremos que sea el origen
 }
