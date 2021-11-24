@@ -1,4 +1,4 @@
 **/vendor/**
 **/node_modules/**
-js/index.js
+./js/index.js
 .idea
