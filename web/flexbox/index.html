@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main class="container">
+        <h1>Flexbox</h1>
+
+        <p>Here is a quote from <b>CSS Tricks</b></p>
+        <blockquote cite="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">
+            The Flexbox Layout (Flexible Box) module (a W3C Candidate Recommendation as of October 2017) aims at providing a more efficient way to lay out, align and distribute space among items in a container, even when their size is unknown and/or dynamic (thus the word “flex”).
+        </blockquote>
+
+        <h2>Flex container</h2>
+
+        <code>
+            .flex-container {
+                display: flex; /* or inline-flex */
+            }
+        </code>
+
+        <h3>Flex Row | Column</h3>
+        <div class="flex-container--cols mt-2">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+            <div class="flex-item">Item 4</div>
+            <div class="flex-item">Item 5</div>
+            <div class="flex-item">Item 6</div>
+            <div class="flex-item">Item 7</div>
+            <div class="flex-item">Item 8</div>
+            <div class="flex-item">Item 9</div>
+            <div class="flex-item">Item 10</div>
+        </div>
+
+        <h3>Flex Wrap | No wrap</h3>
+
+        <div class="flex-container--rows-reverse flex--wrap">
+            <div class="flex-item">Row item 1</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 2</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 3</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 4</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 5</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 6</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 7</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 8</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 9</div>
+            <!-- /.flex-item -->
+            <div class="flex-item">Row item 10</div>
+            <!-- /.flex-item -->
+        </div>
+        <!-- /.flex-container -->
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

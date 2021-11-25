@@ -1,0 +1,88 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-item {
+    background-color: crimson;
+    color: white;
+    padding: .8rem;
+}
+
+.flex-item ~ .flex-item:not([hidden]) {
+    margin-left: 1rem;
+}
+
+
+.flex-container--rows {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.flex-container--rows-reverse {
+    display: flex;
+    flex-direction: row-reverse !important;
+}
+
+.flex-container--rows-reverse > .flex-item ~ .flex-item:not([hidden]) {
+    margin: 0 1rem 0 0 !important;
+}
+
+.flex-container--cols {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.flex-container--cols-reverse {
+    display: flex;
+    flex-direction: column-reverse !important;
+}
+
+.flex-container--cols > .flex-item ~ .flex-item:not([hidden]) {
+    margin: 1rem 0 0 0;
+}
+
+.flex-container--cols-reverse > .flex-item ~ .flex-item:not([hidden]) {
+    margin: 0 0 1rem 0;
+}
+
+.flex--wrap {
+    flex-wrap: wrap !important;
+}
+
+.flex--unwrap {
+    flex-wrap: nowrap !important;
+}
+
+.flex-container.flex--wrap > .flex-item,
+.flex-container--rows.flex--wrap > .flex-item,
+.flex-container--rows-reverse.flex--wrap > .flex-item,
+.flex-container--rows-reverseº > .flex-item ~ .flex-item:not([hidden]){
+    margin: .5rem 0 0 0 !important;
+}
+
