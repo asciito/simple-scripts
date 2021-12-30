@@ -1,6 +1,6 @@
 {
     "window.zoomLevel": 1,
     "liveServer.settings.port": 81,
-    "liveServer.settings.host": "localhost",        // Nombre del host
-    "liveServer.settings.root": "/web/slideshow"    // Cambiar por la carpeta que queremos que sea el origen
+    "liveServer.settings.host": "localhost",        // Name of the host
+    "liveServer.settings.root": "/web/rock-paper-scissors"    // Change this path to use with liveserver
 }

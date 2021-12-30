@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rock - Paper - Scissors: Random selection</title>
+
+    <style>
+        :root {
+            --cube: 80px;
+            --general-margin: 20px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+        }
+
+        .hand {
+            display: inline-block;
+            height: var(--cube);
+            width: var(--cube);
+        }
+
+        img {
+            width: 100% !important;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .players > * ~ *:not([hidden]) {
+            margin-left: 40px;
+        }
+
+        .mb-2 {
+            margin-bottom: var(--general-margin) !important;
+        }
+
+        .mb-4 {
+            margin-bottom: calc(var(--general-margin) * 2);
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+    </style>
+</head>
+<body>
+    <main id="main" class="container">
+        <h1 class="mb-4">{{ whoWon }}</h1>
+        
+        <div class="players">
+            <!-- Player 1 -->
+            <div class="column" style="display: inline-block;">
+
+                <hand :choose="player1"></hand>
+                <h4 class="text-center">Player 1</h4>
+
+            </div>
+
+            <!-- Player 2 -->
+            <div class="column" style="display: inline-block;">
+
+                <hand :choose="player2"></hand>
+                <h4 class="text-center">Player 2</h4>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script type="text/x-template" id="hand">
+        <rock v-if="choose === 'rock'" />
+
+        <paper v-else-if="choose === 'paper'" />
+
+        <scissors v-else />
+    </script>
+
+    <!--
+        TODO:
+        - Reuser some code
+        - Find good SVG for the hands
+    -->
+    <script type="text/x-template" id="rock">
+        <div class="hand"> 
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAACcElEQVRoge2Zv2sUQRTHP3dIMOS0UNTkRAtRQRCD8QoLOwtRwUKsLPwHTGNhoeI/YaeIhYWIYmwEORsRtNFDRBB/gZAqomJyitGYcLGYt+4wmdVdZ9+ehPnAsHuP2e/7PmZnZ28WIpFIJLIMqQMr+m0ihBZwD/gOzAEPgL19dfQXtgE3gA/AR+A6cAz4Biw6bQ44CbSl/zRwB9hZuWuHUeALSw0n7TawCdgs51n9pqVP37grRm4CG4EmcIvU4IjVt2nFL8nvtcCExCbk2s/AJ8yo7a6iCICvYmK9FRuxDNec/kl8jRXbRfZIdYGtGsZdevgNZ8UTgzarrXgbGJbWltjFci37yTI8Dyx44r5C7HjLirUk9javmZBnfA+zTrjmzmfEO56YzRvPeTPAX27mMcWE8gR47IlnjWDplFVIFoUKqQcmcudB3wgt5L9h2RTyL7gruNbtpTrZ1wGvJUEPuKqVCMVCasB9EX8JjGkksVAr5JAITwEbNBI4qBVyTYRPaYh7UCvknQhv1xD3oFbIrAgPaoh7UFvZF+S4qpCdiihSyJQct2gYCaVIIR057tMwUiXHMffss4ryqU32BmbHYxE4rJHAQfUV5ayId9B/hVctZAgz6bVHJdmU6CrmYFyS+P6elsWo5HilmIMB0lVea1TOif5lJf3fnJBEL4CVJWs3gPeif6Bk7SXUgaeS7EKJujXSl9OHJer+kTHMZ4PkFhgI1GuQFjED7AjUK8QR4IcknwROYyZqI+f1g5j93zOkT8MusL90pznYAzwnezO6SHtExSPhUgeOYj76TAI/yWd8FrO/ewU4WLnrSCQSiYTyCwP72VYg9HxtAAAAAElFTkSuQmCC"/>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="paper">
+        <div class="hand">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAC+0lEQVRoge3ZzYsURxjH8Y/u+pL4whoNSUQhgkgSQTEq+HJQ0JMH8RLQPyEgkegfICGHHDZHNTmFECNqouBBUdRDLvFi8KYoejKJbxNWsytJVHBzqBqmHadnZnerZvuwXygYnq5+nt9vurq7uoq8fIAzGEYNP2F55prJWYohjDa1B3h/EnWNmWOC8LNYEtu5GDsvXJ0aRnABayZHZmfuC6KXFGJLvX6F6m0YK3qs8TWW46QwbGr4XkNgM/X4ISzCQuHqjOK7XogtY50wPMr+6Wbq8bcKsVUxdiOr0g5ciSKO4h0sxmmdjRSZF2N/55PZnjl4iWfxd533jM1IMf6DMDyHhEf3hwn1lvJuLH6/jbCxxpvbEJZ1EjK9O7095WcMxHYKC7A/d9EcV2RVIbY6xm5PTGZnchiZVYjNjrH/Ogmp4tB6VvhdNzCrVcciVTQyLqaMVI0pI1VjykjVmDJSNfonoea0HElzGskiuIx2Q2sGPsdveISr2Iu+TFqmyWB+Ji5q/aFzolCw3ew3FWWz5a74QkPgLkHwbjyO8S9jv8ob+T2evKUpvg0vhO/0PSpupE8Q+kLr++HTmPgf7FRhI3Avnryp5PihePyJihsZ1Fgwm9vieD8uFYpU1shcXI8Jjpf0WYBbKm6EsDA2HJPsK+mzAg9xeSKFOjBhI/CJcOM/x+aSPrOFl2cukhiBrzWGz+IUCcdIMiP9+CUm+1Xef78VyYwQVtn/iAkHUyXtkqRGYIOwePZSuHd6RXIj8FlMOoKPUicvIYsRGttqNzE/R4Emshl5A9c0pvS5yWaEsPlZn2eVvSxTMF8PtuR26fyynCgf69Em6Vex0J/CIzo1B2P+bzLkfoU+YZ41Krw0Uy5mDOCvmHtrwrylvI27seCRRDmnCzu6o8LnQs9Yj6ex8GHhyTZeBjRM1HSxo5ua7fg3CriDA1iJN7s4dx7WCvdEfTjVsDGL0i5YLax/le2Zd9sumYQr0UwfduBH4bFZH3Lt2ojwRfqtcd7Y/wP6UxlADedClQAAAABJRU5ErkJggg=="/>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="scissors">
+        <div class="hand">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAEeUlEQVRoge3ZaYiVVRgH8N+4gWlkBX3QcUwbURNsL4iC1OhLRAsRqG2UUZEtJC1oIJVERBAUQdlqm+lE5QZRVFRmEX0oSnOgLDUn96UwlWymD895u3fu3Ot9752JKO4fDved95zzP89znuU85x0aaKCBBhpooIH/HAb+2wLUg/44DbOxAnvRhZ9wK5p6u8BJuAtt+A5b0Y6VmIVj6+Tth5NxB5ZhtxC8uB0oep5V6wJDcQkWYFMZ8tK2Gzfl4G3CJNyGt7CzDNf3eAYzMDzNuzL1fZVH+HG4E+/hYAn5ZjyL6cI6LWn8dLGT2bgHygg+UezkG9heRvD1eB5XYWQF2QYpWKcsmnAd1pSQH8IqzMEpqvvmpWmRTlyDm7FYuGCp4BuwENfi+Cq8GVoVNrQHBuD1ogW24WVMwzE5FyjGnDJCd+HnxHs9xtTI2YTJ+DZxPVVu0PzU+Zsw64DaZe+GYfg9cb6JGzC2Dp6BOB9PYKPChnyNo0sHjxJx0InL6pG6Ar5Ii55d47yhuFxYbpfuFv0BczG43MT706Bl9clbEYsT74wcY4/DTCzHft2F/0Z4zOkOE58DcF56fq5ukcvjx/Q7ukJ/q0jrFwur9UvvO0VyWYq3RQrOhQ1C81E1CjoS92BEhf4bE2+2QU1iV+eLXS7e9f3i9J4prFMX/khkeQN8GB5WCOYFFcZdkPrfT39/rmcW24J7cVQ9gpciI82DcXoeZOsrjB1b0l9OkawdFFZqw4PicD0VQ/Iq0VSkRJ4i7Ax8ik9EYD6W3o9RiIkMg4TLdIosc0i4zYliQyZgfGotFdbvEmm3XdR161LLarweg/NaJBOwWSG2usQBVw5Z7q8U8BmGCAtMExZpExYqLY9Kq4JHhavXpUgL1ioUiF14tcLYj1L/lBr4i9FfZLeLcLdIHJ/pfr5slMqbvIo0iVM/i5HVODM9dyjvGi86vMXqRZYBVyX+JVRXZIK4I6wtGrsQR6T+jvRuQpm581R2jeK2KwlTzQVL0Zzm76mmyOqSBdfoWca8kvpuKTP/6pyKZG27/FUwkTy6sK3a2XEIv+BjUXIsFVmoGB+IMmQKnizp25V+l4kTvBJG4GlcKCy/SZwxmw/zOxiPpPlfUnuwl6JFKLxfz1P+ocT9eA6ekWqzXtYO4Ky+UISImS4RfOOFyW8XVcOfIjDzKtIh4m2yuNbOFufVa8Iz2rFPXDneEQlHXynSLC5N5XZsXs75K9P4l+oVoi8UIdzqBeW/fuRtW1QuQqvi10QytF6CIpwgrsm1KrBDfHQY3pMyP9Ylskm9IUloS1zLVd/ZEaJ078KiPljbgkQ2tw+49iSuvO6RBfiOPljbVAX/PLKXXJlbNeccnymyp5fr/o0PE+FivfumuijxrFBdmeJM1daLNbuhVeGT5RL1W2a0qARqCfSdaf0+wzkKymzFfeLLYq3ZbKK4fFVTYK+wRJ8qkaFV1E71ngOVWrv4sP2P/X+jUjxMxRU4VwRkLVbZJ075DnElflehim6ggQYaaOD/hb8AZIraEYYkIWcAAAAASUVORK5CYII="/>
+        </div>
+    </script>
+
+    <script>
+        const { createApp } = Vue;
+
+        const app = createApp({
+            name: 'Gameboard',
+
+            methods: {
+                /**
+                 * Simple way to select one option 
+                 * 
+                 * @return {String}
+                 * */
+                randomChoose: function() {
+                    const hands = ['rock', 'paper', 'scissors'];
+                    const choose = Math.round(Math.random() * 2);
+
+                    return hands[choose];
+                },
+            },
+
+            computed: {
+                /**
+                 * Computed property to determine the player who won.
+                 * 
+                 * */
+                whoWon: function() {
+                    /**
+                     * TODO:
+                     * - Make it less verbose
+                     * - Make it with a lookup table (maybe)
+                     * */
+
+                    if (this.player1 === 'rock' && this.player2 === 'paper') {
+                        return 'Player 2 Won!';
+                    } else if (this.player1 === 'rock' && this.player2 === 'scissors') {
+                        return 'Player 1 Won!';
+                    } else if (this.player1 === 'paper' && this.player2 === 'rock') {
+                        return 'Player 1 Won!';
+                    } else if (this.player1 === 'paper' && this.player2 === 'scissors') {
+                        return 'Player 2 Won!';
+                    } else if (this.player1 === 'scissors' && this.player2 === 'paper') {
+                        return 'Player 1 Won!';
+                    } else if (this.player1 === 'scissors' && this.player2 === 'rock') {
+                        return 'Player 2 Won!';
+                    } else {
+                        return 'Tie';
+                    }
+                },
+            },
+
+            beforeMount() {
+                this.player1 = this.randomChoose();
+                this.player2 = this.randomChoose();
+            },
+
+            data() {
+                return {
+                    player1: '',
+                    player2: '',
+                };
+            }
+        });
+
+        const hand = app.component('Hand', {
+            template: '#hand',
+
+            props: {
+                choose: {
+                    type: String,
+                    default: 'rock',
+                },
+            },
+        });
+
+        /**
+         * INFO:
+         * - Is not good idea to use a loop in this SIMPLE example of how to create components with 'text/x-template'
+         * - Don't touch the code below
+         * */
+        app.component('Rock', {
+            template: '#rock',
+        });
+
+        app.component('Scissors', {
+            template: '#scissors',
+        });
+
+        app.component('Paper', {
+            template: '#paper',
+        });
+
+        // Mount the app
+        app.mount("#main");
+
+    </script>
+
+    
+</body>
+</html>
