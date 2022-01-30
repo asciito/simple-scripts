@@ -3,7 +3,7 @@
 }
 
 body {
-    margin: 0;
+    margin: 10px;
 }
 
 .slide { display: none }
@@ -13,14 +13,34 @@ body {
 
 /* PREV && NEXT BUTTONS */
 .btn {
-    background-color: rgb(165, 165, 165);
+    background-color: #ffffff;
     border: none;
     border-radius: 4px;
+    color: black;
     cursor: pointer;
+    display: inline-block;
     padding: 8px 32px;
     user-select: none;
 }
 
 .btn:hover {
-    background-color: rgb(182, 182, 182);
+    background-color: #e7e7e7;
+}
+
+.slides {
+    background-color: #dc143c;
+    padding: 20px;
+}
+
+.slides .slide {
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 0.5em 0;
 }

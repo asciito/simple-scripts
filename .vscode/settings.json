@@ -2,5 +2,5 @@
     "window.zoomLevel": 1,
     "liveServer.settings.port": 81,
     "liveServer.settings.host": "localhost",        // Name of the host
-    "liveServer.settings.root": "/web/rock-paper-scissors"    // Change this path to use with liveserver
+    "liveServer.settings.root": "/web/slides"    // Change this path to use with liveserver
 }

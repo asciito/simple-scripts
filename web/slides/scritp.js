@@ -1,35 +1,53 @@
 // All the slides
-const slides = $('.slide');
+const slides = $('.slides .slide');
+
+// Active one
+let active   = $('.slide.active');
 
 // Buttons
 const prev = $('#prev');
 const next = $('#next');
 
-let active = $('.slide.active');
+// Current active position
+let curr = getCurrentSlideIndex(); // Reduce the set of matched elements
 
-console.log(slides);
 
+// Event for the button PREV
 prev.click(() => {
-    let prevEl = active.prev();
     active.removeClass('active');
 
-    if (prevEl.length) {
-        active = prevEl.addClass('active');
+    if (curr > 0) {
+        curr -= 1;
     } else {
-        active = slides.last().addClass('active');
+        curr = 3;
     }
     
+    active = $(slides[curr]).addClass('active');
 });
 
+
+// Event for the button NEXT
 next.click(() => {
-    let nextEl = active.next();
     active.removeClass('active');
-    
-    if (nextEl.length) {
-        active = nextEl.addClass('active');
+
+    if (curr < 3) {
+        curr += 1;
     } else {
-        active = slides.first().addClass('active');
+        curr = 0;
+    }
+    
+    active = $(slides[curr]).addClass('active');
+});
+
+
+// Get the current slide
+function getCurrentSlideIndex() {
+    let filtered = Array.from(slides.filter('.active'));
+
+    // We just need one active class in our elements
+    if (filtered.length > 1) {
+        filtered.slice(1).forEach(el => $(el).removeClass('active'));
     }
 
-    console.log(active);
-});
+    return $(filtered[0]).index();
+}
